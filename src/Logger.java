@@ -5,27 +5,27 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Date;
 
-public class Loger {
+public class Logger {
     boolean onScreen;
-    private static Loger log;
+    private static Logger log;
     private static final String pathL = "log.txt";
 
 
-    public Loger(boolean onScreen) throws IOException {
+    public Logger(boolean onScreen) throws IOException {
         this.onScreen = onScreen;
         if (!onScreen) {
             new FileWriter(pathL, false);
         }
     }
 
-    public static synchronized Loger getLoger(boolean onScreen) throws IOException {
+    public static synchronized Logger getLogger(boolean onScreen) throws IOException {
         if (log == null) {
-            log = new Loger(onScreen);
+            log = new Logger(onScreen);
         }
         return log;
     }
 
-    public void log(String str) throws IOException {
+    public void logg(String str) throws IOException {
         Date date = new Date();
         if (this.onScreen) {
             System.out.println(date + " " + str);
